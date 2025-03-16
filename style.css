@@ -2,12 +2,38 @@
         font-family: "Jersey 10", sans-serif;
         font-size: 20px;
         font-style: normal;
+        margin: auto 0;
       
+}
+#bulbasaurPlayer{
+    width: 210px;
+    margin-bottom: 50px;
+}
+
+#squirtlePlayer{
+    width: 310px;
+    margin-bottom: 50px;
+}
+
+#charmanderPlayer{
+    width: 310px;
 }
 
 #muted{
     width: 50px;
     margin: auto 9px;
+}
+
+h1{
+    font-size: 60px;
+    text-align: center;
+}
+
+#squirtleDiv,#charmanderDiv,#bulbasaurDiv{
+    margin: auto 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container{
@@ -17,6 +43,18 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+
+.starterContainer{
+    gap: 70px;
+    display:flex;
+    justify-content: space-between;
+    height: 700px;
+    width: 100%;
+    background-image: url(images/starter-background.webp);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 
 .fightarea{
     display: flex;
@@ -51,12 +89,11 @@
 }
 
 #player .right{
-    margin-top: 105px;
+    margin-top: 145px;
 }
 
-#player img{
-    width: 310px;
-
+#bulbasaurRight{
+    margin-top: 125px;
 }
 
 
@@ -76,15 +113,24 @@
 
 .log{
     border:1px dotted gray;
-    height: 80px;
+    height: 117px;
     overflow-y:scroll ;
     list-style: none;
 }
 
-footer{
+.logArea{
     height: 120px;
     color: white;
     background-color: #254f67;
     border: rgb(199, 163, 77) solid 8px;
+}
+
+footer{
+    display: flex;
+    height: 80px;
+    background-color: antiquewhite;
+    color: black;
+    justify-content: center;
+    align-items: center;
 }
 

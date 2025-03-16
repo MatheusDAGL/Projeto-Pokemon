@@ -22,7 +22,6 @@ class Charmander extends Pokemon{
         super(name);
         this.life = 39;
         this.attack = 10;
-        this.defense = 43;
         this.maxLife = this.life;
     }
 }
@@ -32,12 +31,11 @@ class Squirtle extends Pokemon{
         super(name);
         this.life = 44;
         this.attack = 10;
-        this.defense = 65;
         this.maxLife = this.life;
     }
 }
 
-class Bulbassaur extends Pokemon{
+class Bulbasaur extends Pokemon{
     constructor(name){
         super(name);
         this.life = 45;
@@ -59,23 +57,21 @@ class Stage{
 
     start() {
         this.update();
-        this.pokemon1El.querySelector('.scratch').addEventListener('click',() => this.doAttack(this.pokemon1,this.pokemon2));
-        this.pokemon1El.querySelector('.scratch').addEventListener('click',() => this.doAttack(this.pokemon2,this.pokemon1));
-        this.pokemon1El.querySelector('.protect').addEventListener('click',() => this.doAttack(this.pokemon1,this.pokemon2));
-  
+        this.pokemon1El.querySelector('.attack').addEventListener('click',() => this.doAttack(this.pokemon1,this.pokemon2));
+        this.pokemon1El.querySelector('.attack').addEventListener('click',() => this.doAttack(this.pokemon2,this.pokemon1));  
         
     }
 
     update(){
         //pokemon1
-        this.pokemon1El.querySelector('.name').innerHTML = this.pokemon1.name;
+        this.pokemon1El.querySelector('.HP').innerHTML = `${this.pokemon1.life.toFixed(1)} HP`;
         let p1Pct = (this.pokemon1.life / this.pokemon1.maxLife) * 100;
         this.pokemon1El.querySelector('.bar').style.width = `${p1Pct}%`;
         if (p1Pct <=15){
             this.pokemon1El.querySelector('.bar').style.backgroundColor='red'
         }
         //pokemon2
-        this.pokemon2El.querySelector('.name').innerHTML = this.pokemon2.name;
+        this.pokemon2El.querySelector('.HP').innerHTML = `${this.pokemon2.life.toFixed(1)} HP`;
         let p2Pct = (this.pokemon2.life / this.pokemon2.maxLife) * 100;
         this.pokemon2El.querySelector('.bar').style.width = `${p2Pct}%`;
         if (p2Pct <=15){
@@ -103,7 +99,7 @@ class Stage{
 
             attacked.life -= actualAttack;
             attacked.life -= damage;
-            this.log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)}de dano em ${attacked.name}`)
+            this.log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${attacked.name}`)
         
         this.update();
     }
@@ -152,11 +148,11 @@ soundIcon.addEventListener("click", () => {
     if (isPlaying) {
         music.pause();
         victoyMusic.pause();
-        soundIcon.src = "images/muted.png"; 
+        soundIcon.src = "../images/muted.png"; 
     } else {
         music.play();
         victoyMusic.pause();
-        soundIcon.src = "images/mute.png"; 
+        soundIcon.src = "../images/mute.png"; 
     }
     isPlaying = !isPlaying;
 });
