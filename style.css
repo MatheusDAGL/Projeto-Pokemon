@@ -1,26 +1,90 @@
-.fightarea{
-    display: flex;
-    gap:20px;
+*{
+        font-family: "Jersey 10", sans-serif;
+        font-size: 20px;
+        font-style: normal;
+      
 }
 
-#player,#opponent{
-    flex:1
+#muted{
+    width: 50px;
+    margin: auto 9px;
 }
+
+.container{
+    height: 450px;
+    width: 100%;
+    background-image: url(images/arena.jpeg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.fightarea{
+    display: flex;
+    height: 450px;
+    gap:20px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#opponent img{
+    width: 170px;
+}
+
+
+
+#opponent {
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    justify-content: top;
+}
+
+#player{
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+}
+
+#player .right{
+    margin-top: 105px;
+}
+
+#player img{
+    width: 310px;
+
+}
+
 
 .lifebar{
     height:10px;
+    width: 400px;
     border:1px solid black;
     border-radius: 5px;
 }
 
 .lifebar .bar{
     height: inherit;
-    background-color: green;
+    background-color: #95e6ba;
     border-radius: 5px;
+
 }
 
 .log{
     border:1px dotted gray;
-    height: 200px;
+    height: 80px;
     overflow-y:scroll ;
+    list-style: none;
 }
+
+footer{
+    height: 120px;
+    color: white;
+    background-color: #254f67;
+    border: rgb(199, 163, 77) solid 8px;
+}
+

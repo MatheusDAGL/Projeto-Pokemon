@@ -3,37 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jersey+10&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="imagex/png" href="images/Poké_Ball_icon.svg.ico">
     <title>Pokémon Battle</title>
     
 </head>
 <body>
-    <div class="fightarea">
-        <div id="player">
-            <div class="lifebar">
-                <div class="bar" style ='width: 10%;'></div>
+    <div class ="container">
+        <audio id="musica">
+            <source src="audio/11 Battle (VS Trainer).mp3" type="audio/mpeg">
+        </audio>
+        <audio id ="victory">
+            <source src ="audio/12 Victory (VS Trainer).mp3" type ="audio/mpeg">
+        </audio>
+        <img id="muted" src="images/muted.png" alt ="Ligar aúdio" onclick="playAudio()">
+
+
+        <div class="fightarea">
+         
+            <div id="opponent">
+                <div class="left">
+                    <div class="lifebar">
+                        <div class="bar"></div>
+                    </div>
+                    <strong class ="name">Opponent</strong>
+                </div>
+
+                <div class="right">
+                    <img src="images/Squirtle_29.webp" alt="squirtle">
+                </div>
             </div>
-            <strong class ="name">Player</strong>
-            <div>
-                <button class="attackButton">Scratch</button>
-                <button class="attackButton">Protect</button>
-            </div>
-        </div>
-        <div id="opponent">
-            <div class="lifebar">
-                <div class="bar" style ='width: 10%;'></div>
-            </div>
-            <strong class ="name">Opponent</strong>
-            <div>
-                <button class="attackButton">Scratch</button>
-                <button class="attackButton">Protect</button>
+    
+
+            <div id="player">
+                <div class="right">
+                    <div class="lifebar">
+                        <div class="bar"></div>
+                    </div>
+                    <strong class ="name">Player</strong>
+                    <div>
+                        <button class="scratch">Scratch</button>
+                        <button class="protect">Protect</button>
+                    </div>
+                </div>
+
+                <div class ="left">
+                    <img src="images/charmander.webp" alt="squirtle">
+                </div>
             </div>
 
         </div>
     </div>
-    
-    <ul class="log"></ul>
+    <footer>
+        <ul class="log"></ul>
+    </footer>
 </body>
 
 <script src="js/classes.js"></script>

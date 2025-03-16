@@ -59,10 +59,11 @@ class Stage{
 
     start() {
         this.update();
-
-        this.pokemon1El.querySelector('.attackButton').addEventListener('click',() => this.doAttack(this.pokemon1,this.pokemon2))
+        this.pokemon1El.querySelector('.scratch').addEventListener('click',() => this.doAttack(this.pokemon1,this.pokemon2));
+        this.pokemon1El.querySelector('.scratch').addEventListener('click',() => this.doAttack(this.pokemon2,this.pokemon1));
+        this.pokemon1El.querySelector('.protect').addEventListener('click',() => this.doAttack(this.pokemon1,this.pokemon2));
+  
         
-        this.pokemon2El.querySelector('.attackButton').addEventListener('click',() => this.doAttack(this.pokemon2,this.pokemon1))
     }
 
     update(){
@@ -85,18 +86,24 @@ class Stage{
     doAttack(attacking, attacked){
 
         if(attacking.life <=0 || attacked.life<=0){
-        this.log.addMessage("Já morreu");
+            stopAudio();
+            playVictoryAudio();
+            this.log.addMessage("Fainted");
             return;
         }
+
+        
         let attackFactor = (Math.random()).toFixed(2);
         let defenseFactor = (Math.random()).toFixed(2);
 
         let actualAttack = attacking.attack * parseFloat(attackFactor);
-        let actualDefense = attacked.defense *parseFloat(defenseFactor);
+        let actualDefense = attacked.defense *parseFloat(defenseFactor)+(attacked.life * 0.1);
+        let damage = Math.max(1,actualAttack - actualDefense);
 
 
             attacked.life -= actualAttack;
-            this.log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)} em ${attacked.name}`)
+            attacked.life -= damage;
+            this.log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)}de dano em ${attacked.name}`)
         
         this.update();
     }
@@ -123,3 +130,36 @@ class Log{
         }
     }
 }
+
+
+function stopAudio(){
+    let audio = document.getElementById("musica");
+    audio.pause();
+}
+
+function playVictoryAudio(){
+    let audio = document.getElementById("victory");
+    audio.play();
+}
+
+const soundIcon = document.getElementById("muted");
+const music = document.getElementById("musica");
+const victoyMusic = document.getElementById("victory")
+
+let isPlaying = false;
+
+soundIcon.addEventListener("click", () => {
+    if (isPlaying) {
+        music.pause();
+        victoyMusic.pause();
+        soundIcon.src = "images/muted.png"; 
+    } else {
+        music.play();
+        victoyMusic.pause();
+        soundIcon.src = "images/mute.png"; 
+    }
+    isPlaying = !isPlaying;
+});
+
+
+
