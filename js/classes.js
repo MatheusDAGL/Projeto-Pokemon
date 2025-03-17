@@ -30,7 +30,7 @@ class Squirtle extends Pokemon{
     constructor(name){
         super(name);
         this.life = 44;
-        this.attack = 10;
+        this.attack = 9;
         this.maxLife = this.life;
     }
 }
@@ -39,7 +39,7 @@ class Bulbasaur extends Pokemon{
     constructor(name){
         super(name);
         this.life = 45;
-        this.attack = 10;
+        this.attack = 8;
         this.defense = 55;
         this.maxLife = this.life;
     }
@@ -70,6 +70,10 @@ class Stage{
         if (p1Pct <=15){
             this.pokemon1El.querySelector('.bar').style.backgroundColor='red'
         }
+        if (p1Pct <=0){
+            stopAudio();
+            playDefeatAudio();
+        }
         //pokemon2
         this.pokemon2El.querySelector('.HP').innerHTML = `${this.pokemon2.life.toFixed(1)} HP`;
         let p2Pct = (this.pokemon2.life / this.pokemon2.maxLife) * 100;
@@ -77,31 +81,27 @@ class Stage{
         if (p2Pct <=15){
             this.pokemon2El.querySelector('.bar').style.backgroundColor='red'
         }
+        if (p2Pct<=0){
+            stopAudio();
+            playVictoryAudio();
+        }
     }
 
     doAttack(attacking, attacked){
 
-        if(attacking.life <=0 || attacked.life<=0){
-            stopAudio();
-            playVictoryAudio();
-            this.log.addMessage("Fainted");
-            return;
-        }
-
+    if (attacking.life <= 0) {
+        this.log.addMessage(`${attacking.name} desmaiou!`);   
+        return;
+    }else if (attacked.life <= 0) {
+        this.log.addMessage(`${attacked.name} desmaiou!`);
+        return;
+    }
         
-        let attackFactor = (Math.random()).toFixed(2);
-        let defenseFactor = (Math.random()).toFixed(2);
-
-        let actualAttack = attacking.attack * parseFloat(attackFactor);
-        let actualDefense = attacked.defense *parseFloat(defenseFactor)+(attacked.life * 0.1);
-        let damage = Math.max(1,actualAttack - actualDefense);
-
-
-            attacked.life -= actualAttack;
-            attacked.life -= damage;
-            this.log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${attacked.name}`)
-        
-        this.update();
+    let attackFactor = (Math.random()).toFixed(2);
+    let actualAttack = attacking.attack * parseFloat(attackFactor);
+    attacked.life -= actualAttack;
+    this.log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${attacked.name}`)
+    this.update();
     }
 
 }
@@ -135,6 +135,11 @@ function stopAudio(){
 
 function playVictoryAudio(){
     let audio = document.getElementById("victory");
+    audio.play();
+}
+
+function  playDefeatAudio(){
+    let audio = document.getElementById("defeat");
     audio.play();
 }
 
