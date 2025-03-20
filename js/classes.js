@@ -3,7 +3,6 @@ class Pokemon {
     _life = 1;
     maxLife = 1;
     attack = 0;
-    defense = 0;
     constructor(name){
         this.name = name;
 
@@ -40,7 +39,6 @@ class Bulbasaur extends Pokemon{
         super(name);
         this.life = 45;
         this.attack = 8;
-        this.defense = 55;
         this.maxLife = this.life;
     }
 }
@@ -52,14 +50,17 @@ class Stage{
         this.pokemon1El = pokemon1El;
         this.pokemon2El = pokemon2El;
         this.log = logObject;
-
     }
 
     start() {
         this.update();
+        let attackButton = this.pokemon1El.querySelector('.attack');
+        this.pokemon1El.querySelector('.attack').addEventListener('click',() => attackButton.disabled = true);
         this.pokemon1El.querySelector('.attack').addEventListener('click',() => this.doAttack(this.pokemon1,this.pokemon2));
-        this.pokemon1El.querySelector('.attack').addEventListener('click',() => this.doAttack(this.pokemon2,this.pokemon1));  
-        
+        this.pokemon1El.querySelector('.attack').addEventListener('click',() => setTimeout(() => {
+            this.doAttack(this.pokemon2, this.pokemon1);
+            attackButton.disabled = false;
+        }, 500));
     }
 
     update(){
