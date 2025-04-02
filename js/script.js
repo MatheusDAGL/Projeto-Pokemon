@@ -1,14 +1,8 @@
 let log = new Log(document.querySelector('.log'));
-
-
-let  charmander = new Charmander("Charmander");
-
+let charmander = new Charmander("Charmander");
 let squirtle = new Squirtle("Squirtle");
-
 let bulbasaur = new Bulbasaur("Bulbasaur");
-
 let player, opponent;
-
 
  if (document.title.includes("Bulbasaur")) {
     player = bulbasaur;
@@ -21,13 +15,13 @@ let player, opponent;
     opponent = squirtle;
 }
 
-    let stage = new Stage(
-        player,
-        opponent,
-        document.querySelector('#player'),
-        document.querySelector('#opponent'),
-        log
-    )
+let stage = new Stage(
+    player,
+    opponent,
+    document.querySelector('#player'),
+    document.querySelector('#opponent'),
+    log
+)
 
 console.log(player,opponent)
 stage.start();

@@ -2,15 +2,13 @@
         font-family: "Jersey 10", sans-serif;
         font-size: 20px;
         font-style: normal;
-        margin: auto 0;
-      
+        margin: auto 0; 
 }
 
 #frase{
     background-color:#79caf9;
-
-
 }
+
 #bulbasaurPlayer{
     width: 210px;
     margin-bottom: 50px;
@@ -61,7 +59,6 @@ h1{
     background-repeat: no-repeat;
 }
 
-
 .fightarea{
     display: flex;
     height: 450px;
@@ -73,8 +70,6 @@ h1{
 #opponent img{
     width: 170px;
 }
-
-
 
 #opponent {
     margin-left: 80px;
@@ -102,7 +97,6 @@ h1{
     margin-top: 125px;
 }
 
-
 .lifebar{
     height:10px;
     width: 400px;
@@ -114,7 +108,6 @@ h1{
     height: inherit;
     background-color: #95e6ba;
     border-radius: 5px;
-
 }
 
 .log{
@@ -140,6 +133,17 @@ footer{
     align-items: center;
 }
 
+#creditos{
+    background-color: #80ac74;
+    text-align: center;
+    font-size: 35px;
+}
+
+#creditos a{
+    font-size: 35px;
+    text-decoration: none;
+}
+
 
 @media screen and (max-width: 450px){
     .container{
@@ -150,13 +154,11 @@ footer{
         background-repeat: no-repeat;
     }
 
-
 .starterContainer{
     gap: 10px;
     display:flex;
     flex-direction: column;
     height: 550px;
-    
     background-image: url(images/starter-background.webp);
     background-size: 900px 200%;
     background-repeat: no-repeat;
@@ -171,7 +173,6 @@ footer{
 
 #charmanderPic,#squirtlePic,#bulbasaurPic{
     height: 100px;
-
 }
 
 h1{
@@ -180,18 +181,14 @@ h1{
 }
 
 #opponent {
-
     display: flex;
     align-items: top;
     justify-content: top;
 }
 
 #player{
-
     display: flex;
     flex-direction: row-reverse;
-  
-
 }
 
 .lifebar{
@@ -205,7 +202,6 @@ h1{
     height: inherit;
     background-color: #95e6ba;
     border-radius: 5px;
-
 }
 
 #squirtlePlayer,#charmanderPlayer{

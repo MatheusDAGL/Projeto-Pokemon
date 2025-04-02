@@ -5,7 +5,6 @@ class Pokemon {
     attack = 0;
     constructor(name){
         this.name = name;
-
     }
 
     get life(){
@@ -109,7 +108,6 @@ class Stage{
 
 class Log{
     list = [];
-
     constructor(listEl){
         this.listEl=listEl;
     }
